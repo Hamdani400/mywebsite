@@ -26,9 +26,33 @@ export default function Home() {
     },
   ]
 
-  const renderExperiences = (): React.ReactNode => {
-    return experience.map((item, index) => {
-      return <div className="border-b py-8 border-b-slate-400" key={`exp-${index}`}>
+  const nonItExperience: Experience[] = [
+    {
+      company: 'Tukang Konten',
+      position: 'SEO Article Writer',
+      status: 'Freelance',
+      duration: 'May 2021 - June 2023',
+      activity: ['Creating SEO-optimized articles for website content', 'Conducting keyword research to enhance article visibility']
+    },
+    {
+      company: 'PT. Angkasa Pura II',
+      position: 'Electrical Engineer',
+      status: 'Internship',
+      duration: 'January 2020 - March 2020',
+      activity: ['Assisted in ensuring electrical system safety and reliability for the airport terminal', 'Conducted routine maintenance and inspections on electrical equipment and installations', 'Monitored the health of electrical systems to prevent potential issues', 'Supported the team in troubleshooting and resolving electrical problems efficiently']
+    },
+    {
+      company: 'Saung Writer',
+      position: 'SEO Article Writer',
+      status: 'Freelance',
+      duration: 'January 2016 - January 2019',
+      activity: ['Creating SEO-optimized articles for website content', 'Conducting keyword research to enhance article visibility']
+    },
+  ]
+
+  const renderExperiences = (exp: Experience[]): React.ReactNode => {
+    return exp.map((item, index) => {
+      return <div className={`${exp.length - 1 === index ? '' : 'border-b'} py-8 border-b-slate-300`} key={`exp-${index}`}>
         <ul>
           <li className="font-normal text-xs">
             <h4 className="text-sm font-medium">{item.company}</h4>
@@ -58,10 +82,14 @@ export default function Home() {
       </div>
       {/* end of hero section  */}
 
+      {/* experience section */}
       <div className="w-auto px-11 py-20 bg-darkbg h-auto font-light">
         <h1 className="text-2xl">Working Experience</h1>
-        {renderExperiences()}
+        {renderExperiences(experience)}
+        <h1 className="text-lg mt-9">Working Experience (Non IT)</h1>
+        {renderExperiences(nonItExperience)}
       </div>
+      {/* end of experience section */}
     </div>
   );
 }
