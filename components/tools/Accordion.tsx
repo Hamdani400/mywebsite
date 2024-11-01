@@ -11,11 +11,11 @@ const Accordion: React.FC<ExtendedExperience> = ({ company, status, position, du
 
     return <div className="font-normal text-xs">
         <div>
-            <div className="flex justify-between items-center">
+            <div className="items-center flex justify-between">
                 <div>
-                    <p className="text-sm font-medium p-0 m-0">{company}</p>
-                    <p className="text-3xs p-0 m-0">{status}</p>
-                    <p className="text-3xs p-0 m-0">{position} {duration}</p>
+                    <p className="text-sm font-medium p-0 m-0 sm:text-lg">{position}</p>
+                    <p className="text-3xs p-0 m-0 sm:text-base">{status}</p>
+                    <p className="p-0 text-2xs m-0 sm:text-base">{company} ({duration})</p>
                 </div>
                 <button onClick={onClickButton} className=" p-2 transition-all duration-200 ease-out hover:bg-slate-300 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5">
@@ -26,7 +26,7 @@ const Accordion: React.FC<ExtendedExperience> = ({ company, status, position, du
             </div>
             <div className={`accordion-content-${index}-${type} px-4 max-h-0 overflow-hidden transition-all duration-500 ease-out`}>
                 <ul className="list-disc pt-2">
-                    {activity.map((act, idx) => (<li className="text-2xs" key={`act-${idx}`}>{act}</li>))}
+                    {activity.map((act, idx) => (<li className="text-2xs sm:text-xs" key={`act-${idx}`}>{act}</li>))}
                 </ul>
             </div>
         </div>

@@ -20,6 +20,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         darkbg: '#f5f5f0',
+        cardbg: '#28292d'
       },
       padding: createPaddingObject(100),
       fontSize: {
