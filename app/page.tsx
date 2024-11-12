@@ -1,5 +1,7 @@
 'use client'
 
+import { useRef } from "react"
+
 import Accordion from "@/components/tools/Accordion"
 import { Experience, Projects, Skills } from "../types/types"
 import Image from "next/image"
@@ -8,6 +10,8 @@ import unej from '../public/unej.svg'
 import skensa from '../public/skensa.png'
 
 export default function Home() {
+
+  const contactRef = useRef<HTMLDivElement>(null)
 
   const experience: Experience[] = [
     {
@@ -142,8 +146,13 @@ export default function Home() {
     })
   }
 
+  const scrollIntoContact = () => {
+    console.log(contactRef)
+    contactRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <div>
+    <div className="container mx-auto xl:max-w-[80vw]">
       {/* header section */}
       <div className="h-20 w-auto"></div>
       {/* end of header section */}
@@ -154,7 +163,7 @@ export default function Home() {
         <h1 className="sm:text-xl">Hello! I&#39;m Dani,</h1>
         <h1 className="mb-1 sm:text-xl">a web developer diving into the world of network engineering and DevOps</h1>
         <h2 className="mb-3 text-slate-400 font-light text-xs sm:text-base">Solid in front-end, working with Vue, React, and now exploring the full stack of the web</h2>
-        <button className="text-xs font-normal bg-slate-600 text-white rounded px-2 py-1 hover:bg-slate-500">Get in touch!</button>
+        <button onClick={() => scrollIntoContact()} className="text-xs font-normal bg-slate-600 text-white rounded px-2 py-1 hover:bg-slate-500">Get in touch!</button>
       </div>
       {/* end of hero section  */}
 
@@ -212,7 +221,7 @@ export default function Home() {
       {/* end of skills */}
 
       {/* contact */}
-      <div className="bg-darkbg w-full overflow-hidden py-10">
+      <div ref={contactRef} className="bg-darkbg w-full overflow-hidden py-10">
         <div className="px-[15vw]">
           <h2 className="text-xl font-bold text-center mb-2 sm:text-2xl">Tell Me Your Needs</h2>
           <p className="text-center text-sm mb-6 sm:text-lg">
