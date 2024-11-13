@@ -5,9 +5,7 @@ services:
     build:
       context: .
     expose:
-      - "3000"
-    networks:
-      - this_network
+      - "3000:3000"
 
   nginx:
     image: nginx-latest
